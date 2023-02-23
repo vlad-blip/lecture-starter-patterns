@@ -36,6 +36,8 @@ export const Column = ({ listId, listName, cards, index }: Props) => {
               title={listName}
               onChange={() => {}}
               fontSize="large"
+              width={200}
+              bold
             />
             <Splitter />
             <DeleteButton color="#FFF0" onClick={() => {}} />

@@ -9,10 +9,11 @@ type Props = {
   fontSize: 'x-large' | 'large' | 'medium';
   bold?: boolean;
   title: string;
+  width?: number;
   onChange: (value: string) => void;
 };
 
-export const Title = ({ onChange, title, fontSize, bold }: Props) => {
+export const Title = ({ onChange, title, fontSize, bold, width }: Props) => {
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(false);
   const [value, setValue] = useState(title);
@@ -33,6 +34,7 @@ export const Title = ({ onChange, title, fontSize, bold }: Props) => {
           fontSize={fontSize}
           bold={bold}
           autoFocus={isComponentVisible}
+          width={width ?? 250}
         />
       ) : (
         <BasicTitle
