@@ -21,16 +21,17 @@ export const Text = ({ onChange, text }: Props) => {
   };
 
   return (
-    <TextContainer ref={ref}>
+    <TextContainer className="text-container" ref={ref}>
       {isComponentVisible ? (
         <TextInput
+          className="text-input"
           value={value}
           onChange={onEdit}
           onBlur={() => setIsComponentVisible(false)}
           autoFocus={isComponentVisible}
         />
       ) : (
-        <BasicText onClick={() => setIsComponentVisible(true)}>
+        <BasicText className="text-content" onClick={() => setIsComponentVisible(true)}>
           {value}
         </BasicText>
       )}

@@ -7,7 +7,7 @@ type Props = {
 
 const Footer = ({ onCreateCard }: Props) => {
   return (
-    <FooterContainer>
+    <FooterContainer className="column-footer-container">
       <CreatorInput onSubmit={onCreateCard} />
     </FooterContainer>
   );

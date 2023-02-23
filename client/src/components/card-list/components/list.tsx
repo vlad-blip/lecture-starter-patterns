@@ -11,7 +11,7 @@ type Props = {
 
 const List = ({ cards, dropProvided }: Props) => {
   return (
-    <div>
+    <div className="list-container">
       <DropZone ref={dropProvided.innerRef}>
         <Cards cards={cards} />
         {dropProvided.placeholder}

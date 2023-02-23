@@ -7,7 +7,7 @@ type Props = {
 
 export const ColumnCreatorInput = ({ onCreateList }: Props) => {
   return (
-    <ColumnCreatorContainer>
+    <ColumnCreatorContainer className='column-creator-container'>
       <CreatorInput onSubmit={onCreateList} />
     </ColumnCreatorContainer>
   );

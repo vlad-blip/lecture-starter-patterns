@@ -21,6 +21,7 @@ export const CardItem = React.memo<Props>(
   ({ card, isDragging, provided }: Props) => {
     return (
       <Container
+        className="card-container"
         isDragging={isDragging}
         ref={provided.innerRef}
         {...provided.draggableProps}

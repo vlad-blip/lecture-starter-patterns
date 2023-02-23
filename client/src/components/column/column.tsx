@@ -25,7 +25,7 @@ export const Column = ({ listId, listName, cards, index }: Props) => {
   return (
     <Draggable draggableId={listId} index={index}>
       {(provided: DraggableProvided, snapshot: DraggableStateSnapshot) => (
-        <Container ref={provided.innerRef} {...provided.draggableProps}>
+        <Container className="column-container" ref={provided.innerRef} {...provided.draggableProps}>
           <Header
             className="column-header"
             isDragging={snapshot.isDragging}

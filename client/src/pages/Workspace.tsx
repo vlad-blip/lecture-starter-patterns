@@ -59,7 +59,7 @@ export const Workspace = () => {
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="board" type="COLUMN" direction="horizontal">
           {(provided: DroppableProvided) => (
-            <Container ref={provided.innerRef} {...provided.droppableProps}>
+            <Container className="workspace-container" ref={provided.innerRef} {...provided.droppableProps}>
               {lists.map((list: List, index: number) => (
                 <Column
                   key={list.id}

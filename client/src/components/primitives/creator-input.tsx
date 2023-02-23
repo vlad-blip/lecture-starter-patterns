@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { AddIcon } from '../icons/add-icon';
+import { AddButton } from './add-button';
 import { Button } from './styled/button';
 import { Input } from './styled/input';
 
@@ -19,14 +20,13 @@ const CreatorInput = ({ onSubmit }: Props) => {
   return (
     <React.Fragment>
       <Input
+        className="creator-input"
         value={name}
         onChange={(e) => setName(e.target.value)}
         fontSize="medium"
         width={250}
       />
-      <Button onClick={onClick}>
-        <AddIcon />
-      </Button>
+      <AddButton onClick={onClick} />
     </React.Fragment>
   );
 };

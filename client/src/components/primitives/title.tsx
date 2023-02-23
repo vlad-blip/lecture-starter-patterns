@@ -23,9 +23,10 @@ export const Title = ({ onChange, title, fontSize, bold }: Props) => {
   };
 
   return (
-    <TitleContainer ref={ref}>
+    <TitleContainer className="title-container" ref={ref}>
       {isComponentVisible ? (
         <TitleInput
+          className="title-input"
           value={value}
           onChange={onEdit}
           onBlur={() => setIsComponentVisible(false)}
@@ -34,7 +35,10 @@ export const Title = ({ onChange, title, fontSize, bold }: Props) => {
           autoFocus={isComponentVisible}
         />
       ) : (
-        <BasicTitle onClick={() => setIsComponentVisible(true)}>
+        <BasicTitle
+          className="title-content"
+          onClick={() => setIsComponentVisible(true)}
+        >
           {value}
         </BasicTitle>
       )}
