@@ -39,7 +39,9 @@ export const Workspace = () => {
     const isReorderColumns = result.type === 'COLUMN';
 
     if (isReorderColumns) {
-      setLists(reorderService.reorder(lists, source.index, destination.index));
+      setLists(
+        reorderService.reorderLists(lists, source.index, destination.index),
+      );
       socket.emit(ListEvent.REORDER, source.index, destination.index);
 
       return;

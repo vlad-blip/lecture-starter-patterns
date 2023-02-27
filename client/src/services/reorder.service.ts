@@ -3,12 +3,11 @@ import type { DraggableLocation } from '@hello-pangea/dnd';
 import { Card, List } from '../common/types';
 
 export const reorderService = {
-  reorder<T>(items: T[], startIndex: number, endIndex: number): T[] {
-    const result = [...items];
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
+  reorderLists(items: List[], startIndex: number, endIndex: number): List[] {
+    const [removed] = items.splice(startIndex, 1);
+    items.splice(endIndex, 0, removed);
 
-    return result;
+    return items;
   },
 
   reorderCards(
@@ -25,11 +24,9 @@ export const reorderService = {
     const isMovingInSameList = source.droppableId === destination.droppableId;
 
     if (isMovingInSameList) {
-      const reordered: Card[] = this.reorder(
-        current,
-        source.index,
-        destination.index,
-      );
+      const [removed] = current.splice(source.index, 1);
+      current.splice(destination.index, 0, removed);
+      const reordered: Card[] = current;
 
       return lists.map((list) =>
         list.id === source.droppableId ? { ...list, cards: reordered } : list,

@@ -12,7 +12,7 @@ type Props = {
   cards: Card[];
 };
 
-const Cards = React.memo(({ cards }: Props) => (
+const Cards = ({ cards }: Props) => (
   <React.Fragment>
     {cards.map((card: Card, index: number) => (
       <Draggable key={card.id} draggableId={card.id} index={index}>
@@ -30,6 +30,6 @@ const Cards = React.memo(({ cards }: Props) => (
       </Draggable>
     ))}
   </React.Fragment>
-));
+);
 
 export { Cards };

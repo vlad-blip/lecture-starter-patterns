@@ -23,24 +23,25 @@ export class ReorderService {
     sourceListId: string;
     destinationListId: string;
   }): List[] {
-    const current: Card[] =
-      lists.find((list) => list.id === sourceListId)?.cards || [];
-    const next: Card[] =
-      lists.find((list) => list.id === destinationListId)?.cards || [];
-    const target: Card = current[sourceIndex];
+    const target: Card = lists.find((list) => list.id === sourceListId)
+      ?.cards?.[sourceIndex];
+
+    if (!target) {
+      return lists;
+    }
 
     const newLists = lists.map((list) => {
       if (list.id === sourceListId) {
-        return {
+        list = {
           ...list,
-          cards: this.removeCardFromList(current, sourceIndex),
+          cards: this.removeCardFromList(list.cards, sourceIndex),
         };
       }
 
       if (list.id === destinationListId) {
-        return {
+        list = {
           ...list,
-          cards: this.addCardToList(next, destinationIndex, target),
+          cards: this.addCardToList(list.cards, destinationIndex, target),
         };
       }
 
