@@ -32,3 +32,5 @@ const onConnection = (socket: Socket): void => {
 io.on('connection', onConnection);
 
 httpServer.listen(PORT, () => console.log('listening on port: ' + PORT));
+
+export { httpServer };
