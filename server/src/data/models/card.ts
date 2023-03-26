@@ -7,12 +7,12 @@ class Card {
 
   public description: string;
 
-  public createAt: Date;
+  public createdAt: Date;
 
   public constructor(name: string, description: string) {
     this.name = name;
     this.description = description;
-    this.createAt = new Date();
+    this.createdAt = new Date();
     this.id = randomUUID();
   }
 }

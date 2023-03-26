@@ -13,14 +13,12 @@ export class CardHandler extends SocketHandler {
   public createCard(listId: string, cardName: string): void {
     const newCard = new Card(cardName, '');
     const lists = this.db.getData();
-    const list = lists.find((list) => list.id === listId);
 
-    if (!list) return;
-
-    const updatedList = { ...list, cards: list.cards.concat(newCard) };
-    this.db.setData(
-      lists.map((list) => (list.id === listId ? updatedList : list)),
+    const updatedLists = lists.map((list) =>
+      list.id === listId ? list.setCards(list.cards.concat(newCard)) : list,
     );
+
+    this.db.setData(updatedLists);
     this.updateLists();
   }
 

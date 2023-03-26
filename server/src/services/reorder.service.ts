@@ -3,9 +3,9 @@ import { List } from '../data/models/list';
 
 export class ReorderService {
   public reorder<T>(items: T[], startIndex: number, endIndex: number): T[] {
-    const result = [...items];
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
+    const card = items[startIndex];
+    const listWithRemoved = this.remove(items, startIndex);
+    const result = this.insert(listWithRemoved, endIndex, card);
 
     return result;
   }
@@ -32,17 +32,11 @@ export class ReorderService {
 
     const newLists = lists.map((list) => {
       if (list.id === sourceListId) {
-        list = {
-          ...list,
-          cards: this.removeCardFromList(list.cards, sourceIndex),
-        };
+        list.setCards(this.remove(list.cards, sourceIndex));
       }
 
       if (list.id === destinationListId) {
-        list = {
-          ...list,
-          cards: this.addCardToList(list.cards, destinationIndex, target),
-        };
+        list.setCards(this.insert(list.cards, destinationIndex, target));
       }
 
       return list;
@@ -51,11 +45,11 @@ export class ReorderService {
     return newLists;
   }
 
-  private removeCardFromList(cards: Card[], index: number): Card[] {
-    return cards.slice(0, index).concat(cards.slice(index + 1));
+  private remove<T>(items: T[], index: number): T[] {
+    return [...items.slice(0, index), ...items.slice(index + 1)];
   }
 
-  private addCardToList(cards: Card[], index: number, card: Card): Card[] {
-    return cards.slice(0, index).concat(card).concat(cards.slice(index));
+  private insert<T>(items: T[], index: number, value: T): T[] {
+    return [...items.slice(0, index), value, ...items.slice(index)];
   }
 }
