@@ -22,10 +22,16 @@ export const Workspace = () => {
   useEffect(() => {
     socket.emit(ListEvent.GET, (lists: List[]) => setLists(lists));
     socket.on(ListEvent.UPDATE, (lists: List[]) => setLists(lists));
+
+    return () => {
+      socket.removeAllListeners(ListEvent.UPDATE).close();
+    };
   }, []);
 
   const onDragEnd = (result: DropResult) => {
-    if (!result.destination) return;
+    if (!result.destination) {
+      return;
+    }
 
     const source: DraggableLocation = result.source;
     const destination: DraggableLocation = result.destination;
@@ -34,11 +40,13 @@ export const Workspace = () => {
       source.droppableId === destination.droppableId &&
       source.index === destination?.index;
 
-    if (isNotMoved) return;
+    if (isNotMoved) {
+      return;
+    }
 
-    const isReorderColumns = result.type === 'COLUMN';
+    const isReorderLists = result.type === 'COLUMN';
 
-    if (isReorderColumns) {
+    if (isReorderLists) {
       setLists(
         reorderService.reorderLists(lists, source.index, destination.index),
       );
@@ -61,7 +69,11 @@ export const Workspace = () => {
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="board" type="COLUMN" direction="horizontal">
           {(provided: DroppableProvided) => (
-            <Container className="workspace-container" ref={provided.innerRef} {...provided.droppableProps}>
+            <Container
+              className="workspace-container"
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
               {lists.map((list: List, index: number) => (
                 <Column
                   key={list.id}

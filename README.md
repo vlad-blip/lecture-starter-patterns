@@ -27,5 +27,5 @@ npm start -w server
 3. Start client
 
 ```
-npm run dev -w client
+npm start -w client
 ```
