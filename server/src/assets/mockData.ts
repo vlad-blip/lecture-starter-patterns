@@ -14,15 +14,15 @@ toDo.cards = [
   ),
   new Card(
     'Implement changing name of card',
-    'Should be possible to change the name of card',
+    'Should be possible to change the name of the card',
   ),
   new Card(
     'Implement changing description of card',
     'Should be possible to change description of card',
   ),
   new Card(
-    'Implement copy card',
-    'Using pattern Prototype implement a possibility to copy card. Id should be new for new card. The name of card should have "copy" suffix',
+    'Implement card copying',
+    'Using pattern Prototype implement a possibility to copy card. Id should be new for new card. The name of the card should have "copy" suffix',
   ),
   new Card(
     'Implement logging on server side',
