@@ -1,5 +1,5 @@
-import { AddIcon } from '../icons/add-icon';
-import { Button } from './styled/button';
+import { Icon } from "../icon/icon";
+import { Button } from "./styled/button";
 
 type Props = {
   onClick: () => void;
@@ -8,7 +8,7 @@ type Props = {
 const AddButton = ({ onClick }: Props) => {
   return (
     <Button className="add-btn" onClick={onClick}>
-      <AddIcon />
+      <Icon iconName="add" />
     </Button>
   );
 };

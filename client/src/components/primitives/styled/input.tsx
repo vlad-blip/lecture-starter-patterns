@@ -1,11 +1,11 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-import { BORDER_RADIUS } from '../../../common/constants';
+import { BORDER_RADIUS } from "../../../common/constants";
 
 type Props = {
-  fontSize: 'x-large' | 'large' | 'medium';
+  fontSize: "x-large" | "large" | "medium";
   width?: number;
-  bold?: boolean;
+  isBold?: boolean;
 };
 
 const Input = styled.input<Props>`
@@ -16,9 +16,9 @@ const Input = styled.input<Props>`
   border-style: none;
   border-width: 1px;
   height: 30px;
-  width: ${({ width }) => (width ? width + 'px' : '250px')};
+  width: ${({ width }) => (width ? width + "px" : "250px")};
   font-size: ${({ fontSize }) => fontSize};
-  font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
+  font-weight: ${({ isBold }) => (isBold ? "bold" : "normal")};
 
   &:focus {
     outline: solid 1px #4c9aff;
