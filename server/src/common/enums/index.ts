@@ -1,2 +1,2 @@
-export { CardEvent } from './card.enums';
-export { ListEvent } from './list.enums';
+export { CardEvent } from './card-event.enum';
+export { ListEvent } from './list-event.enum';

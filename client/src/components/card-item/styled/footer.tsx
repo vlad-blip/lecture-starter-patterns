@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 
-import { GRID } from '../../../common/constants';
+import { SPACE_IN_PX } from '../../../common/constants';
 
 const Footer = styled.div`
   display: flex;
-  margin-top: ${GRID}px;
+  margin-top: ${SPACE_IN_PX}px;
   align-items: center;
 `;
 

@@ -1,6 +1,6 @@
 import { colors } from '@atlaskit/theme';
 
-import { CopyIcon } from '../icons/copy-icon';
+import { Icon } from '../icon/icon';
 import { Button } from './styled/button';
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 const CopyButton = ({ onClick }: Props) => {
   return (
     <Button className="copy-btn" onClick={onClick} color={colors.N30}>
-      <CopyIcon />
+      <Icon iconName="copy" />
     </Button>
   );
 };

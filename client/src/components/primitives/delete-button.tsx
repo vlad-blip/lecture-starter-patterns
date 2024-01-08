@@ -1,6 +1,6 @@
 import { colors } from '@atlaskit/theme';
 
-import { DeleteIcon } from '../icons/delete-icon';
+import { Icon } from '../icon/icon';
 import { Button } from './styled/button';
 
 type Props = {
@@ -10,8 +10,12 @@ type Props = {
 
 const DeleteButton = ({ onClick, color }: Props) => {
   return (
-    <Button className="delete-btn" onClick={onClick} color={color ?? colors.N30}>
-      <DeleteIcon />
+    <Button
+      className="delete-btn"
+      onClick={onClick}
+      color={color ?? colors.N30}
+    >
+      <Icon iconName="delete" />
     </Button>
   );
 };

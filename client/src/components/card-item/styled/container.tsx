@@ -1,7 +1,7 @@
 import { colors } from '@atlaskit/theme';
 import styled from '@emotion/styled';
 
-import { BORDER_RADIUS, GRID } from '../../../common/constants';
+import { BORDER_RADIUS, SPACE_IN_PX } from '../../../common/constants';
 
 type Props = {
   isDragging: boolean;
@@ -17,9 +17,9 @@ const Container = styled.a<Props>`
   box-shadow: ${(props) =>
     props.isDragging ? `2px 2px 1px ${colors.N70}` : 'none'};
   box-sizing: border-box;
-  padding: ${GRID}px;
+  padding: ${SPACE_IN_PX}px;
   min-height: 40px;
-  margin-bottom: ${GRID}px;
+  margin-bottom: ${SPACE_IN_PX}px;
   user-select: none;
 
   color: ${colors.N900};

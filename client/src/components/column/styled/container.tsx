@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
-import { GRID } from '../../../common/constants';
+import { SPACE_IN_PX } from '../../../common/constants';
 
 const Container = styled.div`
-  margin: ${GRID}px;
+  margin: ${SPACE_IN_PX}px;
   display: flex;
   flex-direction: column;
 `;
