@@ -1,11 +1,11 @@
-import { createServer } from 'http';
-import { Server, Socket } from 'socket.io';
+import { createServer } from "http";
+import { Server, Socket } from "socket.io";
 
-import { lists } from './assets/mockData';
-import { Database } from './data/database';
-import { CardHandler } from './handlers/card.handler';
-import { ListHandler } from './handlers/list.handler';
-import { ReorderService } from './services/reorder.service';
+import { lists } from "./assets/mockData";
+import { Database } from "./data/database";
+import { CardHandler } from "./handlers/card.handler";
+import { ListHandler } from "./handlers/list.handler";
+import { ReorderProxy, ReorderService } from "./services/reorder.service";
 
 const PORT = 3003;
 
@@ -19,14 +19,20 @@ const io = new Server(httpServer, {
 
 const db = Database.Instance;
 const reorderService = new ReorderService();
+const reorderProxy = new ReorderProxy(reorderService);
 
 if (process.env.NODE_ENV !== "production") {
   db.setData(lists);
 }
 
 const onConnection = (socket: Socket): void => {
-  new ListHandler(io, db, reorderService).handleConnection(socket);
-  new CardHandler(io, db, reorderService).handleConnection(socket);
+  new ListHandler(io, db, reorderService, reorderProxy).handleConnection(
+    socket
+  );
+
+  new CardHandler(io, db, reorderService, reorderProxy).handleConnection(
+    socket
+  );
 };
 
 io.on("connection", onConnection);
